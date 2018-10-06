@@ -8,8 +8,8 @@ def term(dict):
 	approx = 0.0
 	start = dict['start']
 	end = start+dict['iterations']
-	for x in range(start, end,1):
-		approx+=(4. * pow(-1, x) / (2.*x + 1.))
+	for x in range(int(start), int(end)):
+		approx+=(4. * pow(-1, x) / (2.*x + 1))
 	return approx
 
 if __name__=='__main__':

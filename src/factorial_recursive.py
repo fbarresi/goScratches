@@ -4,4 +4,4 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 
-print(factorial(1000))
+print(factorial(500))

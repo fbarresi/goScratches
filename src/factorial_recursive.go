@@ -1,26 +1,32 @@
 package main
 
-import (
-	"fmt"
-	"math/big"
-)
+import "fmt"
+import "math/big"
 
 func main() {
-	var x big.Int
-	x.SetUint64(500)
-	fmt.Println(Factorial(x))
+
+    //n := big.NewInt(40)
+    r := big.NewInt(500)
+
+    fmt.Println(factorial(r))
+
 }
 
-func Factorial(n big.Int) (result big.Int) {
-	var zero big.Int
+func factorial(n *big.Int) (result *big.Int) {
+    //fmt.Println("n = ", n)
+    b := big.NewInt(0)
+    c := big.NewInt(1)
 
-	if n == zero {
-		var x big.Int
-		x.SetUint64(1)
-		return x
-	}
-
-	result = n.Mul(Factorial(n - 1))
-	return result
-
+    if n.Cmp(b) == -1 {
+        result = big.NewInt(1)
+    }
+    if n.Cmp(b) == 0 {
+        result = big.NewInt(1)
+    } else {
+        // return n * factorial(n - 1);
+        result = new(big.Int)
+        result.Set(n)
+        result.Mul(result, factorial(n.Sub(n, c)))
+    }
+    return
 }
