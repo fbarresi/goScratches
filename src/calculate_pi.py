@@ -8,7 +8,7 @@ def term(dict):
 	approx = 0.0
 	start = dict['start']
 	end = start+dict['iterations']
-	for x in range(start, end):
+	for x in range(start, end,1):
 		approx+=(4. * pow(-1, x) / (2.*x + 1.))
 	return approx
 
@@ -21,7 +21,7 @@ if __name__=='__main__':
     n = 1000000
     
     # iterable with a list of terms to calculate in each worker
-    part_count=[{'start': i*(n/np),'iterations': n/np} for i in range(np)]
+    part_count=[{'start': float(i*(n/np)),'iterations': float(n/np)} for i in range(np)]
 
     #Create the worker pool
     pool = Pool(processes=np)   

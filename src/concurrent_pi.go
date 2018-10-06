@@ -9,10 +9,13 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func main() {
+	start := time.Now()
 	fmt.Println("Esitmated value of Pi:", pi(1000000))
+	fmt.Println("time:", time.Since(start))
 }
 
 // pi launches n goroutines to compute an
