@@ -2,14 +2,15 @@ package main
 
 import "fmt"
 import "math/big"
+import "time"
 
 func main() {
 
     //n := big.NewInt(40)
+    start := time.Now()
     r := big.NewInt(500)
-
     fmt.Println(factorial(r))
-
+    fmt.Println("time:", time.Since(start))
 }
 
 func factorial(n *big.Int) (result *big.Int) {

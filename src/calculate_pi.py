@@ -1,6 +1,7 @@
 import random
 import multiprocessing
 from multiprocessing import Pool
+import time
 
 
 #term of Leibniz Series (pi/4 = 1 -1/3 +1/5 -1/7 ...)
@@ -13,6 +14,7 @@ def term(dict):
 	return approx
 
 if __name__=='__main__':
+    start = time.time()
     
     np = multiprocessing.cpu_count()
     #np=1
@@ -30,4 +32,5 @@ if __name__=='__main__':
     count=pool.map(term, part_count)
 
     print("Esitmated value of Pi: "+ str(sum(count)))
+    print(time.time()-start)
 
