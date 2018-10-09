@@ -1,19 +1,24 @@
-<Query Kind="Program" />
+<Query Kind="Program">
+  <Namespace>System.Threading.Tasks</Namespace>
+</Query>
 
 void Main()
 {
 	"Estimate Pi".Dump();
 		
-	var pi = 0d;
+	var tasks = new List<Task<double>>();
 	for (int i = 0; i < 1000000; i++)
 	{
-		CalculateTerm(ref pi, i);
+		tasks.Add(CalculateTerm(i));
 	}
-	pi.Dump();
+	var taskArray = tasks.ToArray();
+	Task.WaitAll(taskArray);
+	var pi = taskArray.Select(t=>t.Result).Sum().Dump();
+	
 }
 
 // Define other methods and classes here
-private void CalculateTerm(ref double pi, int i)
+private Task<double> CalculateTerm(int i)
 {
-	pi += 4*(Math.Pow(-1, i)/(2*i+1));
+	return Task.Run(()=>4*(Math.Pow(-1, i)/(2*i+1)));
 }

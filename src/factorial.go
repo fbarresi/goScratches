@@ -11,5 +11,5 @@ func main() {
 	var f big.Int
 	f.MulRange(1, 1000)
 	fmt.Println(&f)
-	fmt.Println("time:", time.Since(start))
+	fmt.Println(time.Since(start))
 }
